@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Simple2DEngine.Audio</RootNamespace>
+    <BaseOutputPath>..\..\bin\</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MP3Sharp" Version="1.0.5" />
+    <PackageReference Include="Vortice.XAudio2" Version="3.6.2" />
+    <PackageReference Include="WaveDecoderSharp" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

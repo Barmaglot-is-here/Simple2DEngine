@@ -1,0 +1,3 @@
+[submodule "WaveDecoderSharp"]
+	path = WaveDecoderSharp
+	url = https://github.com/Barmaglot-is-here/WaveDecoderSharp

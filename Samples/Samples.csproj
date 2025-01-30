@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<BaseOutputPath>..\..\bin\</BaseOutputPath>
+	<RootNamespace>Simple2DEngine.Samples</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DrawText\Gamedata\fontCollection.list" />
+    <None Remove="DrawText\Gamedata\Fonts\Ubuntu-Bold.ttf" />
+    <None Remove="DrawText\Gamedata\Fonts\Ubuntu-BoldItalic.ttf" />
+    <None Remove="DrawText\Gamedata\Fonts\Ubuntu-Italic.ttf" />
+    <None Remove="DrawText\Gamedata\Fonts\Ubuntu-Light.ttf" />
+    <None Remove="DrawText\Gamedata\Fonts\Ubuntu-LightItalic.ttf" />
+    <None Remove="DrawText\Gamedata\Fonts\Ubuntu-Medium.ttf" />
+    <None Remove="DrawText\Gamedata\Fonts\Ubuntu-MediumItalic.ttf" />
+    <None Remove="DrawText\Gamedata\Fonts\Ubuntu-Regular.ttf" />
+    <None Remove="Localization\Gamedata\Sprite1.png" />
+    <None Remove="Localization\Localization\Fra\SampleSound.mp3" />
+    <None Remove="Localization\Localization\Fra\Sprite1.png" />
+    <None Remove="Localization\Localization\Rus\SampleSound.mp3" />
+    <None Remove="Localization\Localization\Rus\Sprite1.png" />
+    <None Remove="PlaySound\Gamedata\SampleSound.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Simple2DEngine\Core\Core.csproj" />
+    <ProjectReference Include="..\Simple2DEngine\Graphics\Graphics.csproj" />
+    <ProjectReference Include="..\Simple2DEngine\Input\Input.csproj" />
+    <ProjectReference Include="..\Simple2DEngine\Windowing\Windowing.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="DrawText\Gamedata\fontCollection.list">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DrawImage\Gamedata\Sprite1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="DrawText\Gamedata\Fonts\Ubuntu-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DrawText\Gamedata\Fonts\Ubuntu-BoldItalic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DrawText\Gamedata\Fonts\Ubuntu-Italic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DrawText\Gamedata\Fonts\Ubuntu-Light.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DrawText\Gamedata\Fonts\Ubuntu-LightItalic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DrawText\Gamedata\Fonts\Ubuntu-Medium.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DrawText\Gamedata\Fonts\Ubuntu-MediumItalic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DrawText\Gamedata\Fonts\Ubuntu-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\Gamedata\SampleSound.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\Gamedata\Sprite1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\Localization\Fra\SampleSound.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\Localization\Fra\Sprite1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Localization\Localization\Rus\Sprite1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PlaySound\Gamedata\SampleSound.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Localization\Localization\Rus\SampleSound.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

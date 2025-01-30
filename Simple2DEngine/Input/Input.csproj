@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<RootNamespace>Simple2DEngine.Input</RootNamespace>
+    <Nullable>enable</Nullable>
+	<BaseOutputPath>..\..\bin\</BaseOutputPath>
+  </PropertyGroup>
+
+</Project>
