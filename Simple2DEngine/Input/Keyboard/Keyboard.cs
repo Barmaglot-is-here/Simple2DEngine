@@ -12,8 +12,8 @@ public static class Keyboard
     }
 
     public static bool Pressed(Key key)    => _keyState[(int)key] == KeyState.Press;
-    public static bool Holded(Key key)     => _keyState[(int)key] == KeyState.Press
-                                                || _keyState[(int)key] == KeyState.Hold;
+    public static bool Holded(Key key)     => _keyState[(int)key] == KeyState.Press 
+                                           || _keyState[(int)key] == KeyState.Hold;
     public static bool Released(Key key)   => _keyState[(int)key] == KeyState.Release;
 
     internal static void Update()

@@ -37,7 +37,7 @@ public class Application : IDisposable
         Window.OnSizeChanged        += OnWindowSizeChanged;
         Window.OnResizeBegin        += OnResizeBegin;
         Window.OnResizeEnd          += OnResizeEnd;
-        Window.OnFullscreenChanhged += OnFulscreenChanged;
+        Window.OnFullscreenChanhged += OnFullscreenChanged;
     }
 
     public void Run()
@@ -105,7 +105,7 @@ public class Application : IDisposable
         Renderer.Resize();
     }
 
-    private void OnFulscreenChanged() => Renderer.Resize();
+    private void OnFullscreenChanged() => Renderer.Resize();
 
     public void Dispose()
     {

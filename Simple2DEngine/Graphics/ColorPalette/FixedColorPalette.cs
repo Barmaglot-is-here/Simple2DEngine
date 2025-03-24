@@ -19,5 +19,6 @@ public sealed class FixedColorPalette : ColorPalette
 
     internal override ID2D1SolidColorBrush GetBrush(Color color) => _brushes[color];
 
-    public override void Clear() => throw new NotImplementedException("Can't clear FixedColorPalette");
+    public override void Clear() 
+        => throw new NotImplementedException("Can't clear FixedColorPalette");
 }

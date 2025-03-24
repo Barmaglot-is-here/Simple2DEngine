@@ -27,8 +27,6 @@ public class LocalizationSample : Application
 
     protected override void Update()
     {
-        base.Update();
-
         if (Keyboard.Pressed(Key.P))
             if (!_sound.IsPlayed)
                 _sound.Play();

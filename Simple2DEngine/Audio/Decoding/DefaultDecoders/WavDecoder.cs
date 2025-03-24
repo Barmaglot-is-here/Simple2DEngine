@@ -4,15 +4,15 @@ namespace Simple2DEngine.Audio;
 
 internal class WavDecoder : ISoundDecoder
 {
-    public void Decode(string path, out SoundFormat format, out Stream stream)
+    public Stream Decode(string path, out SoundFormat format)
     {
         WaveDecoder decoder     = new(path);
         WaveFormat waveFormat   = decoder.ReadFormat(out var _);
 
         format = new(waveFormat.SamplesPerSec, waveFormat.Channels,
-                                waveFormat.AvgBytesPerSecond, waveFormat.BlockAlign,
-                                waveFormat.BitsPerSample);
+                     waveFormat.AvgBytesPerSecond, waveFormat.BlockAlign,
+                     waveFormat.BitsPerSample);
 
-        stream = decoder.Stream;
+        return decoder.Stream;
     }
 }

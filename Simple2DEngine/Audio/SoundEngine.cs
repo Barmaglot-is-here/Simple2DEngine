@@ -28,12 +28,12 @@ public class SoundEngine : IDisposable
     public void AddDecoder(string fileExtension, ISoundDecoder decoder)
         => _decoderFactory.Add(fileExtension, decoder);
 
-    internal void Decode(string sound, out SoundFormat format, out Stream stream)
+    internal Stream Decode(string sound, out SoundFormat format)
     {
         string extension        = Path.GetExtension(sound);
         ISoundDecoder decoder   = _decoderFactory.Get(extension);
 
-        decoder.Decode(sound, out format, out stream);
+        return decoder.Decode(sound, out format);
     }
 
     internal IXAudio2SourceVoice CreateSource(WaveFormat waveFormat)

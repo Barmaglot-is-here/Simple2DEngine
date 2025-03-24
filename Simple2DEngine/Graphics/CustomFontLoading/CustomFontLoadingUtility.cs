@@ -1,11 +1,13 @@
-﻿namespace Simple2DEngine.Graphics.CustomFontLoading;
+﻿using DirectWrite = SharpDX.DirectWrite;
+
+namespace Simple2DEngine.Graphics.CustomFontLoading;
 
 //Класс-костыль, который я был вынужден написать
 //Ибо аналогичный функционал в Vortice не работает
 //А лезть в исходники и что-то чинить мне лень
 internal class CustomFontLoadingUtility : IDisposable
 {
-    private readonly SharpDX.DirectWrite.Factory _writeFactory;
+    private readonly DirectWrite.Factory _writeFactory;
 
     public CustomFontLoadingUtility()
     {
@@ -17,9 +19,8 @@ internal class CustomFontLoadingUtility : IDisposable
         FontCollectionLoader collectionLoader = new(paths);
 
         _writeFactory.RegisterFontCollectionLoader(collectionLoader);
-        SharpDX.DirectWrite.FontCollection fontCollection = new(_writeFactory,
-                                                                collectionLoader,
-                                                                new());
+        DirectWrite.FontCollection fontCollection = new(_writeFactory, collectionLoader,
+                                                        new());
 
         _writeFactory.UnregisterFontCollectionLoader(collectionLoader);
 

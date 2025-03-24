@@ -80,7 +80,8 @@ public static partial class Mouse
     {
         for (int i = 0; i < _buttonState.Length; i++)
         {
-            if (_buttonState[i] == ButtonState.Click || _buttonState[i] == ButtonState.DoubleClick)
+            if (_buttonState[i] == ButtonState.Click || 
+                _buttonState[i] == ButtonState.DoubleClick)
                 _buttonState[i] = ButtonState.Hold;
             else if (_buttonState[i] == ButtonState.Release)
                 _buttonState[i] = ButtonState.None;

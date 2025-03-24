@@ -1,10 +1,11 @@
 ﻿using SharpGen.Runtime;
 using Vortice.Direct2D1;
-using Vortice.Direct3D;
 using Vortice.Direct3D11;
 using Vortice.DirectWrite;
 using Vortice.DXGI;
 using Vortice.WIC;
+using Direct3D = Vortice.Direct3D;
+using DCommon = Vortice.DCommon;
 using static Vortice.Direct2D1.D2D1;
 using static Vortice.Direct3D11.D3D11;
 using static Vortice.DirectWrite.DWrite;
@@ -49,18 +50,18 @@ public partial class Renderer : IDisposable
                                              out ID2D1Factory1 D2D1Factory,
                                              out ID2D1Device D2D1Device)
     {
-        Vortice.Direct3D.FeatureLevel[] featureLevels =
+        Direct3D.FeatureLevel[] featureLevels =
         {
-            Vortice.Direct3D.FeatureLevel.Level_11_1,
-            Vortice.Direct3D.FeatureLevel.Level_11_0,
-            Vortice.Direct3D.FeatureLevel.Level_10_1,
-            Vortice.Direct3D.FeatureLevel.Level_10_0,
-            Vortice.Direct3D.FeatureLevel.Level_9_3,
-            Vortice.Direct3D.FeatureLevel.Level_9_2,
-            Vortice.Direct3D.FeatureLevel.Level_9_1
+            Direct3D.FeatureLevel.Level_11_1,
+            Direct3D.FeatureLevel.Level_11_0,
+            Direct3D.FeatureLevel.Level_10_1,
+            Direct3D.FeatureLevel.Level_10_0,
+            Direct3D.FeatureLevel.Level_9_3,
+            Direct3D.FeatureLevel.Level_9_2,
+            Direct3D.FeatureLevel.Level_9_1
         };
 
-        var D3D11Device = D3D11CreateDevice(DriverType.Hardware,
+        var D3D11Device = D3D11CreateDevice(Direct3D.DriverType.Hardware,
                                             DeviceCreationFlags.VideoSupport |
                                             DeviceCreationFlags.BgraSupport |
                                             DeviceCreationFlags.Debug,
@@ -106,7 +107,7 @@ public partial class Renderer : IDisposable
     private ID2D1Bitmap1 CreateBackBuffer()
     {
         BitmapProperties1 bitmapProperties = new();
-        bitmapProperties.PixelFormat    = new(Format.B8G8R8A8_UNorm, Vortice.DCommon.AlphaMode.Ignore);
+        bitmapProperties.PixelFormat    = new(Format.B8G8R8A8_UNorm, DCommon.AlphaMode.Ignore);
         bitmapProperties.BitmapOptions  = BitmapOptions.Target | BitmapOptions.CannotDraw;
 
         Result result = _swapChain.GetBuffer(0, out IDXGISurface? DXGISurface);

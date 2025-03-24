@@ -44,5 +44,6 @@ internal static class WinApi
         uint wMsgFilterMax, uint wRemoveMsg);
 
     [DllImport("User32.dll", ExactSpelling = true)]
-    public static extern bool PostMessageW(IntPtr hWnd, uint msg, UIntPtr wParam, IntPtr lParam);
+    public static extern bool PostMessageW(IntPtr hWnd, uint msg, UIntPtr wParam, 
+                                           IntPtr lParam);
 }

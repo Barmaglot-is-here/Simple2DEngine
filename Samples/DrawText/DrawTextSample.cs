@@ -55,8 +55,6 @@ public class DrawTextSample : Application
 
     protected override void Update()
     {
-        base.Update();
-
         if (Keyboard.Pressed(Key.Q))
             Window.Close();
 

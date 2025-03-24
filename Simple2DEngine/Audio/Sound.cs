@@ -20,7 +20,7 @@ public class Sound : BaseSound
 
     public static Sound Load(SoundEngine engine, string path)
     {
-        engine.Decode(path, out SoundFormat format, out Stream stream);
+        Stream stream = engine.Decode(path, out SoundFormat format);
 
         return FromStream(engine, format, stream);
     }
