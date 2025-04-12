@@ -42,8 +42,9 @@ public partial class Renderer : IDisposable
         return new(ptr);
     }
 
+#pragma warning disable CS8604
     internal IDWriteTextFormat CreateTextFormat(string fontFamilyName, 
-                                                IDWriteFontCollection fontCollection,
+                                                IDWriteFontCollection? fontCollection,
                                                 FontWeight fontWeight, FontStyle fontStyle, 
                                                 FontStretch fontStretch, float fontSize)
     {
@@ -53,5 +54,13 @@ public partial class Renderer : IDisposable
             fontStretch, fontSize);
 
         return format;
+    }
+#pragma warning restore CS8604
+
+    internal ID2D1Effect CreateEffect(Guid effectId)
+    {
+        IntPtr effectPtr = _context.CreateEffect(effectId);
+
+        return new(effectPtr);
     }
 }

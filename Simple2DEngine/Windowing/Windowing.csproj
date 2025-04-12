@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
 	<TargetFramework>net8.0-windows</TargetFramework>
@@ -6,8 +6,7 @@
     <Nullable>enable</Nullable>
 	<DefineConstants>WINDOWS</DefineConstants>
 	<OutputType>Library</OutputType>
-	<RootNamespace>Core.Windowing</RootNamespace>
-	<BaseOutputPath>..\..\bin\</BaseOutputPath>
+	<RootNamespace>Simple2DEngine.Windowing</RootNamespace>
   </PropertyGroup>
 
 </Project>

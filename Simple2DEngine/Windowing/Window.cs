@@ -36,12 +36,12 @@ public class Window
 
     public IntPtr Handle { get; }
 
-    public Action<Point>? OnSizeChanged { get; set; }
-    public Action<Point>? OnPositionChanged { get; set ; }
+    public event Action<Point>? OnSizeChanged;
+    public event Action<Point>? OnPositionChanged;
 
-    public Action? OnResizeBegin { get; set; }
-    public Action? OnResizeEnd { get; set; }
-    public Action? OnFullscreenChanhged { get; set; }
+    public event Action? OnResizeBegin;
+    public event Action? OnResizeEnd;
+    public event Action? OnFullscreenChanged;
 
     public bool IsFullscreen { get; private set; }
 
@@ -206,7 +206,7 @@ public class Window
 
         IsFullscreen = mode;
 
-        OnFullscreenChanhged?.Invoke();
+        OnFullscreenChanged?.Invoke();
     }
 
     private void ToMonitorSize()

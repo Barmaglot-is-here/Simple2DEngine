@@ -1,5 +1,5 @@
 ﻿using Simple2DEngine.Samples;
 
-LocalizationSample sample = new("Fra");
+ColorizeImageSample sample = new();
 
 sample.Run();

@@ -20,6 +20,16 @@ internal static class Extensions
         return brushes;
     }
 
+    public static TValue GetOrNew<TKey, TValue>(this IDictionary<TKey, TValue> dict, 
+                                                TKey key,
+                                                Func<TKey, TValue> createFunc)
+    {
+        if (!dict.TryGetValue(key, out TValue? value))
+            dict[key] = value = createFunc(key);
+
+        return value;
+    }
+
     public static void DisposeAll(this IEnumerable<IDisposable> disposables)
     {
         foreach (var disposable in disposables)

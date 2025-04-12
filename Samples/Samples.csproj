@@ -5,11 +5,11 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	<BaseOutputPath>..\..\bin\</BaseOutputPath>
 	<RootNamespace>Simple2DEngine.Samples</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ColorizeImage\Gamedata\Sprite1.png" />
     <None Remove="DrawText\Gamedata\fontCollection.list" />
     <None Remove="DrawText\Gamedata\Fonts\Ubuntu-Bold.ttf" />
     <None Remove="DrawText\Gamedata\Fonts\Ubuntu-BoldItalic.ttf" />
@@ -25,6 +25,7 @@
     <None Remove="Localization\Localization\Rus\SampleSound.mp3" />
     <None Remove="Localization\Localization\Rus\Sprite1.png" />
     <None Remove="PlaySound\Gamedata\SampleSound.mp3" />
+    <None Remove="TransformImage\Gamedata\Sprite1.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -90,6 +91,18 @@
 
   <ItemGroup>
     <Content Include="Localization\Localization\Rus\SampleSound.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ColorizeImage\Gamedata\Sprite1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="TransformImage\Gamedata\Sprite1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

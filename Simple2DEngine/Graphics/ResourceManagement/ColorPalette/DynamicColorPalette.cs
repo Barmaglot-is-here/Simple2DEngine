@@ -8,7 +8,7 @@ public sealed class DynamicColorPalette : ColorPalette
     private readonly Renderer _renderer;
     private Dictionary<Color, ID2D1SolidColorBrush> _brushes;
 
-    protected override IEnumerable<ID2D1SolidColorBrush> Brushes => _brushes.Values;
+    protected override IEnumerable<IDisposable> Values => _brushes.Values;
 
     public DynamicColorPalette(Renderer renderer)
     {
@@ -23,16 +23,11 @@ public sealed class DynamicColorPalette : ColorPalette
     }
 
     internal override ID2D1SolidColorBrush GetBrush(Color color)
-    {
-        if (!_brushes.TryGetValue(color, out ID2D1SolidColorBrush? brush))
-            _brushes[color] = brush = _renderer.CreateBrush(color);
-
-        return brush;
-    }
+        => _brushes.GetOrNew(color, _renderer.CreateBrush);
 
     public override void Clear()
     {
-        _brushes.Values.DisposeAll();
+        Values.DisposeAll();
 
         _brushes = new();
     }

@@ -7,7 +7,6 @@
     <AssemblyName>Simple2DEngine</AssemblyName>
     <RootNamespace>Simple2DEngine</RootNamespace>
     <OutputType>Library</OutputType>
-	<BaseOutputPath>..\..\bin\</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

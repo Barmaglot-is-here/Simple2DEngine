@@ -8,7 +8,7 @@ public sealed class FixedColorPalette : ColorPalette
 {
     private readonly FrozenDictionary<Color, ID2D1SolidColorBrush> _brushes;
 
-    protected override IEnumerable<ID2D1SolidColorBrush> Brushes => _brushes.Values;
+    protected override IEnumerable<IDisposable> Values => _brushes.Values;
 
     public FixedColorPalette(Renderer renderer, IEnumerable<Color> colors)
     {
@@ -20,5 +20,5 @@ public sealed class FixedColorPalette : ColorPalette
     internal override ID2D1SolidColorBrush GetBrush(Color color) => _brushes[color];
 
     public override void Clear() 
-        => throw new NotImplementedException("Can't clear FixedColorPalette");
+        => throw new NotSupportedException("Can't clear FixedColorPalette");
 }

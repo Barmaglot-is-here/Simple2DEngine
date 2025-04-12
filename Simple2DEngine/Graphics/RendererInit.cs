@@ -29,6 +29,8 @@ public partial class Renderer : IDisposable
     private readonly IDXGISwapChain _swapChain;
     private ID2D1Bitmap1 _backBuffer;
 
+    private readonly ColorEffects _effects;
+
     public ColorPalette ColorPalette { get; set; }
 
     internal Renderer(IntPtr hwnd)
@@ -43,6 +45,7 @@ public partial class Renderer : IDisposable
         result3.CheckError();
 
         _WICImagingFactory  = new();
+        _effects            = new(this);
         ColorPalette        = new DynamicColorPalette(this);
     }
 

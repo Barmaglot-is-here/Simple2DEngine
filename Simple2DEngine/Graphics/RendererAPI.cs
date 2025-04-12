@@ -44,6 +44,7 @@ public partial class Renderer : IDisposable
         _context            .Dispose();
         _swapChain          .Dispose();
         _backBuffer         .Dispose();
+        _effects            .Dispose();
         ColorPalette        .Dispose();
     }
 }
