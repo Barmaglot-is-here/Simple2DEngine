@@ -94,6 +94,8 @@ public class TestApplication : Application {
 - [DrawImage](https://github.com/Barmaglot-is-here/Simple2DEngine/tree/master/Samples/DrawImage)
 - [DrawText](https://github.com/Barmaglot-is-here/Simple2DEngine/tree/master/Samples/DrawText)
 - [PlaySound](https://github.com/Barmaglot-is-here/Simple2DEngine/tree/master/Samples/PlaySound)
+- [ColorizeImage](https://github.com/Barmaglot-is-here/Simple2DEngine/tree/master/Samples/ColorizeImage)
+- [TransformImage](https://github.com/Barmaglot-is-here/Simple2DEngine/tree/master/Samples/TransformImage)
 - [Localization](https://github.com/Barmaglot-is-here/Simple2DEngine/tree/master/Samples/Localization)
 
 # Используемые библиотеки
