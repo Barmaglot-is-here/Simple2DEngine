@@ -1,6 +1,6 @@
 <Project>
    <PropertyGroup>
-      <OutDir>$(SolutionDir)\Bulid\bin</OutDir>
-      <BaseIntermediateOutputPath>$(SolutionDir)\Bulid\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
+      <OutDir>..\..\Build\bin</OutDir>
+      <BaseIntermediateOutputPath>..\..\Build\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
    </PropertyGroup>
 </Project>
