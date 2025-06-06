@@ -36,7 +36,7 @@ public class TestApplication : Application {
   {
       base.Update();
 
-      if (Keyboard.Pressed(Key.Q))
+      if (Keyboard.KeyPressed(Key.Q))
           Window.Close();
   }
 }
@@ -85,7 +85,7 @@ public class TestApplication : Application {
 ```
   protected override void Update() //В этом классе должна выполняться игровая логика
   {
-     if (Keyboard.Pressed(Key.Q)) //Проверяем, не нажата ли клавиша `Q` на клавиатуре
+     if (Keyboard.KeyPressed(Key.Q)) //Проверяем, не нажата ли клавиша `Q` на клавиатуре
         Window.Close(); //Закрываем окно, если это так. (Window, равно как и Renderer, является свойством родительского класса Application)
   }
 ```
@@ -100,5 +100,4 @@ public class TestApplication : Application {
 
 # Используемые библиотеки
 - Vortice: https://github.com/amerkoleci/Vortice.Windows
-- Sharp.DX: https://github.com/sharpdx/SharpDX
 - MP3Sharp: https://github.com/ZaneDubya/MP3Sharp
