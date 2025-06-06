@@ -26,7 +26,7 @@ internal class FontCollectionLoader : IResourceLoader<FontCollection>
     private void MakeAbsolute(string[] paths)
     {
         for (int i = 0; i < paths.Length; i++)
-            paths[i] = Resources.GetResourcePath(paths[i]);
+            paths[i] = Resources.GetPath(paths[i]);
     }
 
 #if DEBUG

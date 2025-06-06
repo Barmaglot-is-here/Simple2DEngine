@@ -1,4 +1,6 @@
-﻿using Vortice.XAudio2;
+﻿using MP3Sharp;
+using Vortice.XAudio2;
+using WaveDecoderSharp;
 
 namespace Simple2DEngine.Audio;
 
@@ -29,4 +31,12 @@ internal static class Extensions
         task.Wait();
         task.Dispose();
     }
+
+    public static SoundFormat ToXAudioFormat(this WaveFormat waveFormat)
+        => new(waveFormat.SamplesPerSec,     waveFormat.Channels,
+               waveFormat.AvgBytesPerSecond, waveFormat.BlockAlign,
+               waveFormat.BitsPerSample);
+
+    public static SoundFormat ToXAudioFormat(this MP3Stream mp3Stream)
+        => new(mp3Stream.Frequency, mp3Stream.ChannelCount);
 }

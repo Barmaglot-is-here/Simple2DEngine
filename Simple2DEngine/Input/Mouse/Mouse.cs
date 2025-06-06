@@ -19,15 +19,15 @@ public static partial class Mouse
         _buttonState        = new ButtonState[buttonsCount];
     }
 
-    public static bool Clicked(MouseButton button)   
+    public static bool ButtonClicked(MouseButton button)   
         => _buttonState[(int)button] == ButtonState.Click;
-    public static bool DoubleClicked(MouseButton button)   
+    public static bool ButtonDoubleClicked(MouseButton button)   
         => _buttonState[(int)button] == ButtonState.DoubleClick;
-    public static bool Holded(MouseButton button)   
+    public static bool ButtonHolded(MouseButton button)   
         => _buttonState[(int)button] == ButtonState.Click
         || _buttonState[(int)button] == ButtonState.DoubleClick
         || _buttonState[(int)button] == ButtonState.Hold;
-    public static bool Released(MouseButton button) 
+    public static bool ButtonReleased(MouseButton button) 
         => _buttonState[(int)button] == ButtonState.Release;
 
     internal static void Update()

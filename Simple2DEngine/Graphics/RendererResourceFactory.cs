@@ -1,5 +1,4 @@
-﻿using Simple2DEngine.Graphics.CustomFontLoading;
-using Vortice.Direct2D1;
+﻿using Vortice.Direct2D1;
 using Vortice.DirectWrite;
 using Vortice.Mathematics;
 using Vortice.WIC;
@@ -8,12 +7,9 @@ namespace Simple2DEngine.Graphics;
 
 public partial class Renderer : IDisposable
 {
-    internal ID2D1Bitmap CreateBitmapFrom(string file)
+    internal ID2D1Bitmap CreateBitmapFrom(Stream stream)
     {
-        if (!Path.Exists(file))
-            throw new Exception($"File doesn't exist: {file}");
-
-        var decoder = _WICImagingFactory.CreateDecoderFromFileName(file);
+        var decoder = _WICImagingFactory.CreateDecoderFromStream(stream);
         var frame   = decoder.GetFrame(0);
 
         var formatConverter = _WICImagingFactory.CreateFormatConverter();
@@ -33,13 +29,15 @@ public partial class Renderer : IDisposable
 
     internal IDWriteFontCollection CreateFontCollection(string[] paths)
     {
-        CustomFontLoadingUtility fontLoadingUtility = new();
+        FontCollectionLoader collectionLoader = new(paths);
+        
+        _writeFactory.RegisterFontCollectionLoader(collectionLoader);
+        
+        var collection = _writeFactory.CreateCustomFontCollection(collectionLoader, 0, 0);
 
-        IntPtr ptr = fontLoadingUtility.Load(paths);
+        _writeFactory.UnregisterFontCollectionLoader(collectionLoader);
 
-        fontLoadingUtility.Dispose();
-
-        return new(ptr);
+        return collection;
     }
 
 #pragma warning disable CS8604

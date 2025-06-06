@@ -51,7 +51,7 @@ public partial class Renderer : IDisposable
 
     public void DrawSprite(Sprite sprite, Vector2 position, Color color)
     {
-        var effect = _effects.Get(color);
+        var effect = ColorPalette.GetEffect(color);
 
         effect.SetInput(0, sprite.Source, new());
 

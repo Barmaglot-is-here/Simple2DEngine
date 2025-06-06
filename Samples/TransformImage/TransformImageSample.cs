@@ -29,10 +29,10 @@ public class TransformImageSample : Application
      
     protected override void Update()
     {
-        if (Keyboard.Pressed(Key.Q))
+        if (Keyboard.KeyPressed(Key.Q))
             Window.Close();
 
-        if (Keyboard.Pressed(Key.F))
+        if (Keyboard.KeyPressed(Key.F))
             Window.Fullscreen(!Window.IsFullscreen);
     }
 }

@@ -27,16 +27,16 @@ public class LocalizationSample : Application
 
     protected override void Update()
     {
-        if (Keyboard.Pressed(Key.P))
+        if (Keyboard.KeyPressed(Key.P))
             if (!_sound.IsPlayed)
                 _sound.Play();
             else
                 _sound.Pause();
 
-        if (Keyboard.Pressed(Key.Q))
+        if (Keyboard.KeyPressed(Key.Q))
             Window.Close();
 
-        if (Keyboard.Pressed(Key.F))
+        if (Keyboard.KeyPressed(Key.F))
             Window.Fullscreen(!Window.IsFullscreen);
     }
 }

@@ -19,7 +19,14 @@ public class Sprite : IDisposable
 
     public static Sprite FromFile(Renderer renderer, string path)
     {
-        var source = renderer.CreateBitmapFrom(path);
+        using Stream stream = File.OpenRead(path);
+
+        return FromStream(renderer, stream);
+    }
+
+    public static Sprite FromStream(Renderer renderer, Stream stream)
+    {
+        var source = renderer.CreateBitmapFrom(stream);
 
         return new Sprite(source);
     }

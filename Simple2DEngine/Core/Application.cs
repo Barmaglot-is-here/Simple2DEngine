@@ -37,7 +37,6 @@ public class Application : IDisposable
         Window.OnSizeChanged        += OnWindowSizeChanged;
         Window.OnResizeBegin        += OnResizeBegin;
         Window.OnResizeEnd          += OnResizeEnd;
-        Window.OnFullscreenChanged += OnFullscreenChanged;
     }
 
     public void Run()
@@ -67,7 +66,15 @@ public class Application : IDisposable
     protected virtual void Update() { }
     protected virtual void Draw() { }
 
-    private void OnWindowSizeChanged(Point size) => _resizeRequest = true;
+    private void OnWindowSizeChanged(Point size)
+    {
+        //Если размер окна изменяется в одном кадре - изменяем область рендеринга немедленно
+        //В противном случае посылаем resizeRequest
+        if (_resizeTask == null || _resizeTask.Status != TaskStatus.Running)
+            Renderer.Resize();
+        else
+            _resizeRequest = true;
+    }
 
     private void OnResizeBegin()
     {
@@ -104,8 +111,6 @@ public class Application : IDisposable
 
         Renderer.Resize();
     }
-
-    private void OnFullscreenChanged() => Renderer.Resize();
 
     public void Dispose()
     {

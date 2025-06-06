@@ -11,16 +11,25 @@ public static class Resources
         _loaders    = new();
     }
 
-    public static void Scan(string directory) => Scan(directory, directory);
+    public static void Scan(string directory, bool trimRootDirectory = true)
+    {
+        string? rootDirectory = !trimRootDirectory 
+                              ? Path.GetDirectoryName(directory) 
+                              : directory;
 
-    private static void Scan(string directory, string rootDirectory)
+        Scan(directory, rootDirectory);
+    }
+
+    private static void Scan(string directory, string? rootDirectory)
     {
         foreach (string path in Directory.EnumerateFiles(directory))
         {
             string fullPath     = path.ToLower();
-            string relatimePath = Path.GetRelativePath(rootDirectory, fullPath);
+            string relativePath = rootDirectory == null 
+                                ? fullPath
+                                : Path.GetRelativePath(rootDirectory, fullPath);
 
-            _index[relatimePath] = fullPath;
+            _index[relativePath] = fullPath;
         }
 
         foreach (string subdirectory in Directory.EnumerateDirectories(directory))
@@ -35,21 +44,22 @@ public static class Resources
         if (!_loaders.TryGetValue(typeof(T), out object? loader))
             throw new ResourceLoadingException($"{typeof(T)} loader doesn't exist");
 
-        path = GetResourcePath(path);
+        path = GetPath(path);
 
-        try
-        {
-            return ((IResourceLoader<T>)loader).Load(path);
-        }
-        catch (FileNotFoundException)
-        {
+        if (!Path.Exists(path))
             throw new ResourceLoadingException($"File doesn't exists: {path}");
-        }
+
+        return ((IResourceLoader<T>)loader).Load(path);
     }
 
-    public static string GetResourcePath(string relativePath)
+    public static string GetPath(string relativePath)
     {
         relativePath = relativePath.ToLower();
+
+#if DEBUG
+        if (!_index.ContainsKey(relativePath))
+            throw new Exception($"{relativePath} doesn't indexed");
+#endif
 
         return _index[relativePath];
     }

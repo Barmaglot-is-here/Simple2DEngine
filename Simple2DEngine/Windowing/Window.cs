@@ -156,7 +156,7 @@ public class Window
         return DefWindowProcW(hWnd, msg, wParam, lParam);
     }
 
-    public void Update(out bool result)
+    internal void Update(out bool result)
     {
         while (PeekMessageW(out MSG msg, IntPtr.Zero, 0, 0, PM_REMOVE) != 0)
         {
