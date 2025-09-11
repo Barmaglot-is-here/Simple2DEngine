@@ -1,6 +1,6 @@
 ﻿namespace Simple2DEngine.Input.Mouse;
 
-internal enum ButtonState
+public enum ButtonState
 {
     None,
     Release,

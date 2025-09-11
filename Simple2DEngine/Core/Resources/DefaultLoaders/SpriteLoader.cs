@@ -11,5 +11,5 @@ internal class SpriteLoader : IResourceLoader<Sprite>
         _renderer = renderer;
     }
 
-    public Sprite Load(string path) => Sprite.FromFile(_renderer, path);
+    public Sprite Load(string path) => Sprite.Load(_renderer, path);
 }

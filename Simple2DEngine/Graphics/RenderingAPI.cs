@@ -20,6 +20,13 @@ public partial class Renderer : IDisposable
         DrawSprite(sprite, rect, opacity);
     }
 
+    public void DrawSprite(Sprite sprite, Vector2 position, Size size, float opacity = 1)
+    {
+        Rect rect = new(position, size);
+
+        DrawSprite(sprite, rect, opacity);
+    }
+
     public void DrawSprite(Sprite sprite, Rect? destinationRectangle = null, 
                            float opacity = 1) 
         => _context.DrawBitmap(sprite.Source, destinationRectangle, opacity, 
@@ -32,6 +39,14 @@ public partial class Renderer : IDisposable
                            float opacity = 1)
     {
         Rect rect = new(position, sprite.Size);
+
+        DrawSprite(sprite, rect, matrix, opacity);
+    }
+
+    public void DrawSprite(Sprite sprite, Vector2 position, Size size, Matrix3x2 matrix,
+                       float opacity = 1)
+    {
+        Rect rect = new(position, size);
 
         DrawSprite(sprite, rect, matrix, opacity);
     }
@@ -60,6 +75,9 @@ public partial class Renderer : IDisposable
         effect.SetInput(0, null, new());
     }
 
+    public void DrawSprite(Sprite sprite, Vector2 position, Size size, Color color) 
+        => DrawSprite(sprite, new Rect(position, size), color);
+
     public void DrawSprite(Sprite sprite, Rect? destinationRectangle, Color color)
     {
         Vector2 position = destinationRectangle.HasValue
@@ -87,8 +105,7 @@ public partial class Renderer : IDisposable
     public void DrawSprite(Sprite sprite, Matrix3x2 matrix, Color color)
         => DrawSprite(sprite, null, matrix, color);
 
-    public void DrawSprite(Sprite sprite, Vector2 position, Matrix3x2 matrix,
-                           Color color)
+    public void DrawSprite(Sprite sprite, Vector2 position, Matrix3x2 matrix, Color color)
     {
         ApplyMatrix(matrix);
 
@@ -96,6 +113,10 @@ public partial class Renderer : IDisposable
 
         ApplyMatrix(Matrix3x2.Identity);
     }
+
+    public void DrawSprite(Sprite sprite, Vector2 position, Size size, Matrix3x2 matrix,
+                       Color color) 
+        => DrawSprite(sprite, new Rect(position, size), matrix, color);
 
     public void DrawSprite(Sprite sprite, Rect? destinationRectangle, Matrix3x2 matrix, 
                            Color color)

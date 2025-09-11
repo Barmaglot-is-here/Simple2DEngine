@@ -6,15 +6,34 @@ public static class Keyboard
 {
     private static readonly KeyState[] _keyState;
 
+    public static bool AnyKeyPressed
+        => _keyState.Count(state => state != KeyState.Press) != 0;
+
     static Keyboard()
     {
-        _keyState = new KeyState[256];
+        _keyState = new KeyState[255];
     }
 
-    public static bool KeyPressed(Key key)    => _keyState[(int)key] == KeyState.Press;
-    public static bool KeyHolded(Key key)     => _keyState[(int)key] == KeyState.Press 
-                                           || _keyState[(int)key] == KeyState.Hold;
-    public static bool KeyReleased(Key key)   => _keyState[(int)key] == KeyState.Release;
+    public static bool KeyPressed(Key key)  => GetState(key) == KeyState.Press;
+    public static bool KeyHolded(Key key)   => GetState(key) == KeyState.Press 
+                                            || GetState(key) == KeyState.Hold;
+    public static bool KeyReleased(Key key) => GetState(key) == KeyState.Release;
+
+    public static KeyState GetState(Key key) => _keyState[(int)key];
+
+    public static KeyValuePair<Key, KeyState>[] GetState()
+    {
+        var state = new KeyValuePair<Key, KeyState>[_keyState.Length];
+
+        for (int i = 0; i < state.Length; i++)
+        {
+            var key = (Key)i;
+
+            state[i] = new(key, _keyState[i]);
+        }
+
+        return state;
+    }
 
     internal static void Update()
     {

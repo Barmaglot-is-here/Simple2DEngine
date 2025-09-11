@@ -22,10 +22,10 @@ public class Sound : BaseSound
     {
         Stream stream = engine.Decode(path, out SoundFormat format);
 
-        return FromStream(engine, format, stream);
+        return Load(engine, format, stream);
     }
 
-    public static Sound FromStream(SoundEngine engine, SoundFormat format, Stream stream)
+    public static Sound Load(SoundEngine engine, SoundFormat format, Stream stream)
     {
         var source = engine.CreateSource(format.Source);
 

@@ -17,14 +17,14 @@ public class Sprite : IDisposable
         Source = source;
     }
 
-    public static Sprite FromFile(Renderer renderer, string path)
+    public static Sprite Load(Renderer renderer, string path)
     {
         using Stream stream = File.OpenRead(path);
 
-        return FromStream(renderer, stream);
+        return Load(renderer, stream);
     }
 
-    public static Sprite FromStream(Renderer renderer, Stream stream)
+    public static Sprite Load(Renderer renderer, Stream stream)
     {
         var source = renderer.CreateBitmapFrom(stream);
 

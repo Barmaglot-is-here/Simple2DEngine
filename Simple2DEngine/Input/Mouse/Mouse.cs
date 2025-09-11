@@ -13,6 +13,9 @@ public static partial class Mouse
     public static int VerticalScrollWheel { get; private set; }
     public static int HorizontalScrollWheel { get; private set; }
 
+    public static bool AnyButtonClicked 
+        => _buttonState.Count(state => state != ButtonState.Click) != 0;
+
     static Mouse()
     {
         int buttonsCount    = Enum.GetNames(typeof(MouseButton)).Length;
@@ -20,15 +23,32 @@ public static partial class Mouse
     }
 
     public static bool ButtonClicked(MouseButton button)   
-        => _buttonState[(int)button] == ButtonState.Click;
+        => GetState(button) == ButtonState.Click;
     public static bool ButtonDoubleClicked(MouseButton button)   
-        => _buttonState[(int)button] == ButtonState.DoubleClick;
+        => GetState(button) == ButtonState.DoubleClick;
     public static bool ButtonHolded(MouseButton button)   
-        => _buttonState[(int)button] == ButtonState.Click
-        || _buttonState[(int)button] == ButtonState.DoubleClick
-        || _buttonState[(int)button] == ButtonState.Hold;
+        => GetState(button) == ButtonState.Click
+        || GetState(button) == ButtonState.DoubleClick
+        || GetState(button) == ButtonState.Hold;
     public static bool ButtonReleased(MouseButton button) 
-        => _buttonState[(int)button] == ButtonState.Release;
+        => GetState(button) == ButtonState.Release;
+
+    public static ButtonState GetState(MouseButton button) 
+        => _buttonState[(int)button - 1];
+
+    public static KeyValuePair<MouseButton, ButtonState>[] GetState()
+    {
+        var state = new KeyValuePair<MouseButton, ButtonState>[_buttonState.Length];
+
+        for (int i = 0; i < state.Length; i++)
+        {
+            var button = (MouseButton)i + 1;
+
+            state[i] = new(button, _buttonState[i]);
+        }
+
+        return state;
+    }
 
     internal static void Update()
     {
@@ -101,18 +121,18 @@ public static partial class Mouse
     private static MouseButton GetButton(int message)
     {
         int button      = message & 0b1111;
-        int buttonIndex = (button + 3) / 3;
-
+        int buttonIndex = (button + 2) / 3;
+        
         return (MouseButton)buttonIndex;
     }
 
     private static ButtonState GetState(int message)
     {
-        int eventIndex = message & 0b11;
+        int eventIndex = message % 3 + 1;
 
         if (eventIndex == 0b01)
             return ButtonState.Click;
-        else if (message == 0b10)
+        else if (eventIndex == 0b10)
             return ButtonState.Release;
         else
             return ButtonState.DoubleClick;

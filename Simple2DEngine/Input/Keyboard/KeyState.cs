@@ -1,6 +1,6 @@
 ﻿namespace Simple2DEngine.Input.Keyboard;
 
-internal enum KeyState
+public enum KeyState
 {
     None,
     Release,

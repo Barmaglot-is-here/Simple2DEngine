@@ -18,10 +18,10 @@ public class SoundEffect : BaseSound
     {
         Stream stream = engine.Decode(path, out SoundFormat format);
 
-        return FromStream(engine, format, stream);
+        return Load(engine, format, stream);
     }
 
-    public static SoundEffect FromStream(SoundEngine engine, SoundFormat format, 
+    public static SoundEffect Load(SoundEngine engine, SoundFormat format, 
                                          Stream stream)
     {
         var source = engine.CreateSource(format.Source);
