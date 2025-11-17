@@ -107,7 +107,8 @@ public static partial class Mouse
                 _buttonState[i] = ButtonState.None;
         }
 
-        DeltaMove = Point.Empty;
+        DeltaMove           = Point.Empty;
+        VerticalScrollWheel = HorizontalScrollWheel = 0;
     }
 
     private static void HandleButtonClick(int message)
